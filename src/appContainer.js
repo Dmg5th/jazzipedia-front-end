@@ -6,7 +6,8 @@ class AppContainer {
     
     getArtists(){
         fetch(this.url + 'artists')
-        .then(resp => console.log(resp))
+        .then(resp => resp.json())
+        .then(data => console.log(data))
         //make a fetch request to artists
         //populate artists and eras properties with the returned data
         //then call renderArtists
