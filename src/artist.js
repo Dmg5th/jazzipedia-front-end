@@ -1,6 +1,7 @@
 class Artist {
     constructor(name){
         this.name = name;
+        AppContainer.artists.push(this);
     }
 }
 

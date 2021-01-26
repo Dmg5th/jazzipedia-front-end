@@ -1,19 +1,21 @@
 class AppContainer {
-    artists = []
-    Eras = []
+    static artists = [];
+    eras = [];
     url = "http://localhost:3000/" 
-    discoverArtists = {}
+    discoverArtists = {};
 
     bindEventListeners(){
         const button = document.querySelector("#create-discover")
-        button.addEventListener("click", this.getRandomArtists.bind(this))
-    }
+        button.addEventListener("click", this.getRandomArtists)
+    };
 
     getRandomArtists(){
-        let randomArtists = []
+        debugger
+       let randomArtists = []
         for (let index = 0; index < 4; index++) {
+           
             //build this out to cover functionality to randomize each era for discovery 
-            randomArtists.push(this.artists[Math.floor(Math.random() * this.artists.length)]);
+            randomArtists.push(AppContainer.artists[Math.floor(Math.random() * AppContainer.artists.length)]);
         }
          return randomArtists
     }
@@ -21,9 +23,13 @@ class AppContainer {
     getArtists(){
         fetch(this.url + 'artists')
         .then(resp => resp.json())
-        .then(data => console.log(data))
+         //populate artists and eras properties with the returned data
+        .then(data =>  {
+            data.forEach(artist => {
+                new Artist(artist.name) 
+            });
+        }) 
         //make a fetch request to artists
-        //populate artists and eras properties with the returned data
         //then call renderArtists
         .catch(err => alert(err)); 
     }
