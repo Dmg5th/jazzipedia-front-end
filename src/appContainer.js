@@ -25,8 +25,9 @@ class AppContainer {
         .then(resp => resp.json())
          //populate artists and eras properties with the returned data
         .then(data =>  {
+            console.log(data)
             data.forEach(artist => {
-                new Artist(artist.name) 
+                new Artist(artist.name, artist.era) 
             });
         }) 
         //make a fetch request to artists
