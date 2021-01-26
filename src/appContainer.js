@@ -2,27 +2,28 @@ class AppContainer {
     static artists = [];
     eras = [];
     url = "http://localhost:3000/" 
-    discoverArtists = {};
+    static discoverArtists = {};
 
     bindEventListeners(){
       const button = document.querySelector("#create-discover")
       button.addEventListener("click", this.getRandomArtists)
     };
 
-    getDiscoverArtists(){
-        this.getRandomArtists();
-    }
-
     getRandomArtists(){
         let randomArtists = []
-        for (let index = 0; index < 4; index++) {
+        for (let index = 0; index < 3; index++) {
         //build this out to cover functionality to randomize each era for discovery 
             randomArtists.push(AppContainer.artists[Math.floor(Math.random() * AppContainer.artists.length)]);
         }
         //Instantiate a DiscoverArtists instance with these artists
-        let discover = new DiscoverArtist(randomArtists)
-      
-      debugger
+         new DiscoverArtist(randomArtists)
+         //insert data into dom 
+         const discoverArtistDiv = document.querySelector("#discover");
+         AppContainer.discoverArtists.artists.forEach(artist => {
+              const artistDiv = document.createElement("div")
+              artistDiv.innerText = artist.name
+              discoverArtistDiv.appendChild(artistDiv)
+         })
     }
 
     getArtists(){
