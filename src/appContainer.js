@@ -28,8 +28,15 @@ class AppContainer {
               discoverArtistDiv.appendChild(artistDiv)
          })
         // randomArtists.forEach(artist => {
-        //     fetch()
-        // });
+            fetch(`http://localhost:3000/artists/${randomArtists[0].id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            })
+            .then(resp => resp.json())
+            .then(data => console.log(data))
+        
     }
 
     getArtists(){
