@@ -1,6 +1,6 @@
 class AppContainer {
     static artists = [];
-    eras = [];
+    static eras = [];
     url = "http://localhost:3000/" 
     static discoverArtists = {};
 
@@ -11,10 +11,13 @@ class AppContainer {
 
     getRandomArtists(){
         let randomArtists = []
-        for (let index = 0; index < 3; index++) {
-        //build this out to cover functionality to randomize each era for discovery 
-            randomArtists.push(AppContainer.artists[Math.floor(Math.random() * AppContainer.artists.length)]);
-        }
+        //randomize each artist from an era
+            AppContainer.eras.forEach(era => {
+                randomArtists.push(Artist.byEra(era.name)[Math.floor(Math.random() * Artist.byEra(era.name).length)]);
+            });
+        // for (let index = 0; index < 3; index++) {
+        //     randomArtists.push(AppContainer.artists[Math.floor(Math.random() * AppContainer.artists.length)]);
+        // }
         //Instantiate a DiscoverArtists instance with these artists
          new DiscoverArtist(randomArtists)
          //insert data into dom 
@@ -24,6 +27,8 @@ class AppContainer {
               artistDiv.innerText = artist.name
               discoverArtistDiv.appendChild(artistDiv)
          })
+
+         
     }
 
     getArtists(){
@@ -32,9 +37,12 @@ class AppContainer {
         .then(resp => resp.json())
          //populate artists and eras properties with the returned data
         .then(data =>  {
-            // console.log(data)
             data.forEach(artist => {
                 new Artist(artist.name, artist.era) 
+                //Avoid instantiating duplicate eras
+                if (!AppContainer.eras.map(era => era.name).includes(artist.name)) {
+                    new Era (artist.era.name)
+                }
              });
         this.renderArtists()
         }) 
