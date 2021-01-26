@@ -9,16 +9,20 @@ class AppContainer {
       button.addEventListener("click", this.getRandomArtists)
     };
 
+    getDiscoverArtists(){
+        this.getRandomArtists();
+    }
+
     getRandomArtists(){
-        debugger
-      let randomArtists = []
+        let randomArtists = []
         for (let index = 0; index < 4; index++) {
-           //build this out to cover functionality to randomize each era for discovery 
+        //build this out to cover functionality to randomize each era for discovery 
             randomArtists.push(AppContainer.artists[Math.floor(Math.random() * AppContainer.artists.length)]);
         }
+        //Instantiate a DiscoverArtists instance with these artists
       return randomArtists
     }
-    
+
     getArtists(){
        //make a fetch request to artists
         fetch(this.url + 'artists')
