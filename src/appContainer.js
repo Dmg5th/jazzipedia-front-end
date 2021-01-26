@@ -3,6 +3,15 @@ class AppContainer {
     Eras = []
     url = "http://localhost:3000/" 
     discoverArtists = {}
+
+    bindEventListeners(){
+        const button = document.querySelector("#create-discover")
+        button.addEventListener("click", this.getRandomArtists)
+    }
+
+    getRandomArtists(){
+        console.log("Farts")
+    }
     
     getArtists(){
         fetch(this.url + 'artists')
@@ -11,7 +20,7 @@ class AppContainer {
         //make a fetch request to artists
         //populate artists and eras properties with the returned data
         //then call renderArtists
-        .catch(err => alert(err))
+        .catch(err => alert(err)); 
     }
     renderArtists(){
         //create DOM nodes and the insert data into them 
