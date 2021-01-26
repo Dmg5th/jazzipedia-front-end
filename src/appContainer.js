@@ -10,6 +10,7 @@ class AppContainer {
     };
 
     getRandomArtists(){
+        debugger
       let randomArtists = []
         for (let index = 0; index < 4; index++) {
            //build this out to cover functionality to randomize each era for discovery 
