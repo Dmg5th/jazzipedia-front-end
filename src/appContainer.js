@@ -34,53 +34,49 @@ class AppContainer {
     };
     renderArtists(){
         //create DOM nodes and the insert data into them 
-        const early = document.querySelector("#Early")
-        const swing = document.querySelector("#Swing")
-        const bebop = document.querySelector("#Bebop")
-        const cool = document.querySelector("#Cool")
-        const hardBop = document.querySelector("#Hard")
-        const freeJazz = document.querySelector("#Free")
-        const fusion = document.querySelector("#Fusion")
-        const eclectic = document.querySelector("#Eclectic")
+        const earlySelect = document.querySelector("#Early")
+        const swingSelect = document.querySelector("#Swing")
+        const bebopSelect = document.querySelector("#Bebop")
+        const coolSelect = document.querySelector("#Cool")
+        const hardBopSelect = document.querySelector("#Hard")
+        const freeJazzSelect = document.querySelector("#Free")
+        const fusionSelect = document.querySelector("#Fusion")
+        const eclecticSelect = document.querySelector("#Eclectic")
         
         AppContainer.artists.forEach(artist => {
             const option = document.createElement("option")
             option.innerText = artist.name;
-
+              //where appended will depend on what era its in 
             switch(artist.era.name) {
             case "Early Jazz/New Orleans and Chicago Dixieland":
-            // code block
-            break;
+                earlySelect.appendChild(option)
+              break;
             case "Swing/Big Band":
-            // code block
-            break;
+                swingSelect.appendChild(option)
+              break;
             case "Bebop":
-                // code block
-                break;
+                bebopSelect.appendChild(option)
+              break;
             case "Cool":
-            // code block     
-            break;
+                coolSelect.appendChild(option)
+              break;
             case "Hard Bop":
-                // code block
-                break;
+                hardBopSelect.appendChild(option)
+              break;
             case "Free Jazz/Avant Garde":
-            // code block
-            break;
+                freeJazzSelect.appendChild(option)
+              break;
             case "Fusion/Jazz-Rock":
-                // code block
-                break;
+                fusionSelect.appendChild(option)
+              break;
             case "Eclecticisim":
-            // code block
-            break;
+                eclecticSelect.appendChild(option)
+              break;
             default:
-            // code block
+            `Not here yo`
         }
-            
-          
-          
-          //where appended will depend on what era its in 
-        })
-        document.body.append(ul)
+    })
+        // document.body.append(ul)
     }
 
 
