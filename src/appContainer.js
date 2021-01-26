@@ -34,14 +34,56 @@ class AppContainer {
     };
     renderArtists(){
         //create DOM nodes and the insert data into them 
-        const ul = document.createElement("ul");
+        const early = document.querySelector("#Early")
+        const swing = document.querySelector("#Swing")
+        const bebop = document.querySelector("#Bebop")
+        const cool = document.querySelector("#Cool")
+        const hardBop = document.querySelector("#Hard")
+        const freeJazz = document.querySelector("#Free")
+        const fusion = document.querySelector("#Fusion")
+        const eclectic = document.querySelector("#Eclectic")
+        
         AppContainer.artists.forEach(artist => {
-            const li = document.createElement("li")
-            li.innerText = artist.name
-            ul.append(li)
+            const option = document.createElement("option")
+            option.innerText = artist.name;
+
+            switch(artist.era.name) {
+            case "Early Jazz/New Orleans and Chicago Dixieland":
+            // code block
+            break;
+            case "Swing/Big Band":
+            // code block
+            break;
+            case "Bebop":
+                // code block
+                break;
+            case "Cool":
+            // code block     
+            break;
+            case "Hard Bop":
+                // code block
+                break;
+            case "Free Jazz/Avant Garde":
+            // code block
+            break;
+            case "Fusion/Jazz-Rock":
+                // code block
+                break;
+            case "Eclecticisim":
+            // code block
+            break;
+            default:
+            // code block
+        }
+            
+          
+          
+          //where appended will depend on what era its in 
         })
         document.body.append(ul)
     }
+
+
 
 
 
