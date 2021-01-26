@@ -1,16 +1,21 @@
 class AppContainer {
-    Artists = []
+    artists = []
     Eras = []
     url = "http://localhost:3000/" 
     discoverArtists = {}
 
     bindEventListeners(){
         const button = document.querySelector("#create-discover")
-        button.addEventListener("click", this.getRandomArtists)
+        button.addEventListener("click", this.getRandomArtists.bind(this))
     }
 
     getRandomArtists(){
-        console.log("Farts")
+        let randomArtists = []
+        for (let index = 0; index < 4; index++) {
+            //build this out to cover functionality to randomize each era for discovery 
+            randomArtists.push(this.artists[Math.floor(Math.random() * this.artists.length)]);
+        }
+         return randomArtists
     }
     
     getArtists(){
