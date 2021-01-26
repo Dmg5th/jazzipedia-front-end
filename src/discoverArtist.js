@@ -1,5 +1,5 @@
-class discoverArtist {
-    constructor(artist1, artist2, artist3){
-
+class DiscoverArtist {
+    constructor(artists){
+        this.artists = artists 
     }
 }

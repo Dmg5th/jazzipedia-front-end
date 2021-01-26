@@ -20,7 +20,9 @@ class AppContainer {
             randomArtists.push(AppContainer.artists[Math.floor(Math.random() * AppContainer.artists.length)]);
         }
         //Instantiate a DiscoverArtists instance with these artists
-      return randomArtists
+        let discover = new DiscoverArtist(randomArtists)
+      
+      debugger
     }
 
     getArtists(){
