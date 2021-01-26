@@ -1,7 +1,8 @@
 class Artist {
-    constructor(name, era){
+    constructor(id, name, era){
         this.name = name;
-        this.era = era
+        this.era = era;
+        this.id = id;
         AppContainer.artists.push(this);
     }
 

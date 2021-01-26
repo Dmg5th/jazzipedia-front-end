@@ -27,7 +27,9 @@ class AppContainer {
               artistDiv.innerText = artist.name
               discoverArtistDiv.appendChild(artistDiv)
          })
-        console.log(AppContainer.eras)
+        // randomArtists.forEach(artist => {
+        //     fetch()
+        // });
     }
 
     getArtists(){
@@ -37,7 +39,7 @@ class AppContainer {
          //populate artists and eras properties with the returned data
         .then(data =>  {
             data.forEach(artist => {
-                new Artist(artist.name, artist.era) 
+                new Artist(artist.id, artist.name, artist.era) 
                 //Avoid instantiating duplicate eras
                 if (!AppContainer.eras.map(era => era.name).includes(artist.name)) {
                     new Era(artist.era.name)
