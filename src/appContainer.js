@@ -6,11 +6,17 @@ class AppContainer {
 
     bindEventListeners(){
       const button = document.querySelector("#create-discover")
-      button.addEventListener("click", this.getRandomArtists)
+      button.addEventListener("click", this.getRandomArtists.bind(this))
 
       const newArtistForm = document.querySelector("#new-artist-form")
-      newArtistForm.addEventListener("submit", this.createArtist);
+      newArtistForm.addEventListener("submit", this.createArtist.bind(this));
     };
+
+    createArtist(e){
+      e.preventDefault()
+      console.log("workin move on")
+      // fetch()
+    }
 
     getRandomArtists(){
         let randomArtists = []
@@ -30,14 +36,15 @@ class AppContainer {
               artistDiv.innerText = artist.name
               discoverArtistDiv.appendChild(artistDiv)
          })
-        randomArtists.forEach(artist => {
-            fetch(`http://localhost:3000/artists/${artist.id}`, {
-                method: 'DELETE',
-            })
-            .then(resp => resp.json())
-            .then(data => console.log(data))
-            .catch(err => console.log(err))
-          })
+         // potential delete action to delete all artists after they've been "discovered"
+        // randomArtists.forEach(artist => {
+        //     fetch(`${this.url}/${artist.id}`, {
+        //         method: 'DELETE',
+        //     })
+        //     .then(resp => resp.json())
+        //     .then(data => console.log(data))
+        //     .catch(err => console.log(err))
+        //   })
         
     }
 
