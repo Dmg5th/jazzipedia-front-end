@@ -27,15 +27,14 @@ class AppContainer {
               artistDiv.innerText = artist.name
               discoverArtistDiv.appendChild(artistDiv)
          })
-        // randomArtists.forEach(artist => {
-            fetch(`http://localhost:3000/artists/${randomArtists[0].id}`, {
+        randomArtists.forEach(artist => {
+            fetch(`http://localhost:3000/artists/${artist.id}`, {
                 method: 'DELETE',
-                headers: {
-                    'Content-type': 'application/json'
-                }
             })
             .then(resp => resp.json())
             .then(data => console.log(data))
+            .catch(err => console.log(err))
+          })
         
     }
 
@@ -100,7 +99,6 @@ class AppContainer {
             `Not here yo`
         }
     })
-        // document.body.append(ul)
     }
 
 
