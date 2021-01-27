@@ -7,6 +7,9 @@ class AppContainer {
     bindEventListeners(){
       const button = document.querySelector("#create-discover")
       button.addEventListener("click", this.getRandomArtists)
+
+      const newArtistForm = document.querySelector("#new-artist-form")
+      newArtistForm.addEventListener("submit", this.createArtist);
     };
 
     getRandomArtists(){
@@ -105,7 +108,8 @@ class AppContainer {
 
 
 
-}
+
+  }
 
 
 
