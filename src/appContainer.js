@@ -14,9 +14,25 @@ class AppContainer {
 
     createArtist(e){
       e.preventDefault()
-      console.log("workin move on")
-      // fetch()
+      const newArtistForm = document.querySelector("#new-artist-form")
+      const eraIndexSelect = document.querySelector("#eraSelect").selectedIndex
+      fetch(`${this.url}artists` , {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: "Daniel Gould",
+          era: "Cool"
+        }) 
+      }) 
+      .then(response => response.json())
+      .then(data => console.log('Success:', data))
+      .catch((error) => console.error('You messed uo something:', error))
     }
+
+    
 
     getRandomArtists(){
         let randomArtists = []
