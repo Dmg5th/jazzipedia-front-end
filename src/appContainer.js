@@ -68,7 +68,11 @@ class AppContainer {
         //         method: 'DELETE',
         //     })
         //     .then(resp => resp.json())
-        //     .then(data => console.log(data))
+        //     .then(data => {
+        //           console.log(data)
+        //           Artist.delete(data.id)
+        //           this.renderArtists();
+        // })
         //     .catch(err => console.log(err))
         //   })
          
