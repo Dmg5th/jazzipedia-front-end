@@ -6,6 +6,10 @@ class Artist {
         AppContainer.artists.push(this);
     }
 
+    static delete(artist){
+
+    }
+
     static byEra(eraName){
         return AppContainer.artists.filter(artist => artist.era.name === eraName)
     }

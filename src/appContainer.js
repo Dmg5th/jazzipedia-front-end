@@ -31,16 +31,20 @@ class AppContainer {
       .then(response => response.json())
       .then(data => { 
         const {id, name, era} = data 
-        // debugger
         new Artist(id, name, era)
-        
-    })
+        this.renderArtists();
+        const newArtistForm = document.querySelector("#new-artist-form")
+        newArtistForm.reset()
+      })
       .catch((error) => console.error('You messed up  something:', error)) //Potentially refractor this to be more abstract
+  
     } 
 
     
 
     getRandomArtists(){
+      const discoverArtistDiv = document.querySelector("#discover");
+      discoverArtistDiv.innerHTML = ""
         let randomArtists = []
         //randomize each artist from an era
             AppContainer.eras.forEach(era => {
@@ -52,7 +56,7 @@ class AppContainer {
         //Instantiate a DiscoverArtists instance with these artists
          new DiscoverArtist(randomArtists)
          //insert data into dom 
-         const discoverArtistDiv = document.querySelector("#discover");
+         
          AppContainer.discoverArtists.artists.forEach(artist => {
               const artistDiv = document.createElement("div")
               artistDiv.innerText = artist.name
@@ -67,7 +71,7 @@ class AppContainer {
         //     .then(data => console.log(data))
         //     .catch(err => console.log(err))
         //   })
-        
+         
     }
 
     getArtists(){
@@ -98,10 +102,19 @@ class AppContainer {
         const fusionSelect = document.querySelector("#Fusion")
         const eclecticSelect = document.querySelector("#Eclectic")
         
-        AppContainer.artists.forEach(artist => {
+        earlySelect.innerHTML = ""
+        swingSelect.innerHTML = ""
+        bebopSelect.innerHTML = ""
+        coolSelect.innerHTML = ""
+        hardBopSelect.innerHTML = ""
+        freeJazzSelect.innerHTML = ""
+        fusionSelect.innerHTML = ""
+        eclecticSelect.innerHTML = ""
+        
+      AppContainer.artists.forEach(artist => {
             const option = document.createElement("option")
             option.innerText = artist.name;
-              //where appended will depend on what era its in 
+            //where appended will depend on what era its in 
             switch(artist.era.name) {
             case "Early Jazz/New Orleans and Chicago Dixieland":
                 earlySelect.appendChild(option)
@@ -134,11 +147,7 @@ class AppContainer {
     }
 
 
-
-
-
-
-  }
+}
 
 
 
