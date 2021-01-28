@@ -97,52 +97,52 @@ class AppContainer {
     };
     renderArtists(){
         //create DOM nodes and the insert data into them 
-        const earlySelect = document.querySelector("#Early")
-        const swingSelect = document.querySelector("#Swing")
-        const bebopSelect = document.querySelector("#Bebop")
-        const coolSelect = document.querySelector("#Cool")
-        const hardBopSelect = document.querySelector("#Hard")
-        const freeJazzSelect = document.querySelector("#Free")
-        const fusionSelect = document.querySelector("#Fusion")
-        const eclecticSelect = document.querySelector("#Eclectic")
+        const earlyDiv = document.querySelector("#Early")
+        const swingDiv = document.querySelector("#Swing")
+        const bebopDiv = document.querySelector("#Bebop")
+        const coolDiv = document.querySelector("#Cool")
+        const hardDiv = document.querySelector("#Hard")
+        const freeDiv = document.querySelector("#Free")
+        const fusionDiv = document.querySelector("#Fusion")
+        const eclecticDiv = document.querySelector("#Eclectic")
         
-        earlySelect.innerHTML = ""
-        swingSelect.innerHTML = ""
-        bebopSelect.innerHTML = ""
-        coolSelect.innerHTML = ""
-        hardBopSelect.innerHTML = ""
-        freeJazzSelect.innerHTML = ""
-        fusionSelect.innerHTML = ""
-        eclecticSelect.innerHTML = ""
+        earlyDiv.innerHTML = ""
+        swingDiv.innerHTML = ""
+        bebopDiv.innerHTML = ""
+        coolDiv.innerHTML = ""
+        hardDiv.innerHTML = ""
+        freeDiv.innerHTML = ""
+        fusionDiv.innerHTML = ""
+        eclecticDiv.innerHTML = ""
         
       AppContainer.artists.forEach(artist => {
-            const option = document.createElement("option")
-            option.innerText = artist.name;
+            const p = document.createElement("p")
+            p.innerText = artist.name;
             //where appended will depend on what era its in 
             switch(artist.era.name) {
             case "Early Jazz/New Orleans and Chicago Dixieland":
-                earlySelect.appendChild(option)
+                earlyDiv.appendChild(p)
               break;
             case "Swing/Big Band":
-                swingSelect.appendChild(option)
+                swingDiv.appendChild(p)
               break;
             case "Bebop":
-                bebopSelect.appendChild(option)
+                bebopDiv.appendChild(p)
               break;
             case "Cool":
-                coolSelect.appendChild(option)
+                coolDiv.appendChild(p)
               break;
             case "Hard Bop":
-                hardBopSelect.appendChild(option)
+                hardBopDiv.appendChild(p)
               break;
             case "Free Jazz/Avant Garde":
-                freeJazzSelect.appendChild(option)
+                freeDiv.appendChild(p)
               break;
             case "Fusion/Jazz-Rock":
-                fusionSelect.appendChild(option)
+                fusionDiv.appendChild(p)
               break;
             case "Eclecticisim":
-                eclecticSelect.appendChild(option)
+                eclecticDiv.appendChild(p)
               break;
             default:
             `Not here yo`
