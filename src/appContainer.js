@@ -14,23 +14,29 @@ class AppContainer {
 
     createArtist(e){
       e.preventDefault()
-      const newArtistForm = document.querySelector("#new-artist-form")
-      const eraIndexSelect = document.querySelector("#eraSelect").selectedIndex
-      fetch(`${this.url}artists` , {
+      //Maybe use object desturturing here
+      const data = e.target;
+   
+      fetch(`${this.url}artists`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          name: "Daniel Gould",
-          era: "Cool"
-        }) 
+          name: data.artist.value,
+          era: data.children[2].value
+        })  
       }) 
       .then(response => response.json())
-      .then(data => console.log('Success:', data))
-      .catch((error) => console.error('You messed uo something:', error))
-    }
+      .then(data => { 
+        const {id, name, era} = data 
+        // debugger
+        new Artist(id, name, era)
+        
+    })
+      .catch((error) => console.error('You messed up  something:', error)) //Potentially refractor this to be more abstract
+    } 
 
     
 
