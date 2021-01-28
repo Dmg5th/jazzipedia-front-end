@@ -14,8 +14,7 @@ class AppContainer {
 
     createArtist(e){
       e.preventDefault()
-      const data = e.target;
-   
+      const target = e.target;
       fetch(`${this.url}artists`, {
         method: 'POST',
         headers: {
@@ -23,13 +22,15 @@ class AppContainer {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          name: data.artist.value,
-          era: data.children[2].value
+          name: target.artist.value,
+          // album: target.album.value,
+          era: target.children[2].value
         })  
       }) 
       .then(response => response.json())
       .then(data => { 
         // destructured variables 
+        debugger
         const {id, name, album, bio, url, era} = data 
         new Artist(id, name, album, bio, url, era)
         this.renderArtists();
