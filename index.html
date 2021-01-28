@@ -6,54 +6,63 @@
     <link rel="stylesheet" href="src/bootstrap.min.css">
 </head>
 <body>
-    <label for="Early">Early Jazz/New Orleans</label>
-    <select name="" id="Early"></select>
-    
-    <label for="Swing">Swing Big Band</label>
-    <select name="" id="Swing"></select>
-    
-    <label for="Bebop">Bebop</label>
-    <select name="" id="Bebop"></select>
-    
-    <label for="Cool">Cool</label>
-    <select name="" id="Cool"></select>
-    
-    <label for="Hard">Hard Bop</label>
-    <select name="" id="Hard"></select>
-    
-    <label for="Free">Free Jazz/Avant Garde</label>
-    <select name="" id="Free"></select>
-    
-    <label for="Fusion">Jazz Fusion</label>
-    <select name="" id="Fusion"></select>
-    
-    <label for="Eclectic">Eclecticism</label>
-    <select name="" id="Eclectic"></select>
-    
-    <button id="create-discover">Discover new artists!</button>
-    <div id="discover"></div>
-    <br><br>
-    <form id="new-artist-form">
-        <label for="">New Artist</label>
-        <input type="text" name="artist">
+    <div class="jumbotron">
+        <h1 class="display-3">Jazzipedia!</h1>
+        <p class="lead">You know....Wikipedia for Jazz.....duh</p>
+        <hr class="my-4">
+        <!-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </p>
 
-        <!-- <label for="">Seminal Album</label>
-        <input type="text" name="album"> -->
-
-
+        <label for="Early">Early Jazz/New Orleans</label>
+        <select name="" id="Early"></select>
         
-        <select name="eraSelect" id="eraSelect">
-            <option value="Early Jazz/New Orleans and Chicago Dixieland">Early Jazz/New Orleans</option>
-            <option value="Swing/Big Band">Swing Big Band</option>
-            <option value="Bebop">Bebop</option>
-            <option value="Cool">Cool</option>
-            <option value="Hard Bop">Hard Bop</option>
-            <option value="Free Jazz/Avant Garde">Free Jazz/Avant Garde</option>
-            <option value="Fusion/Jazz-Rock">Jazz Fusion</option>
-            <option value="Eclecticisim">Eclecticism</option>
-        </select>
-        <input type="submit">
-    </form>
+        <label for="Swing">Swing Big Band</label>
+        <select name="" id="Swing"></select>
+        
+        <label for="Bebop">Bebop</label>
+        <select name="" id="Bebop"></select>
+        
+        <label for="Cool">Cool</label>
+        <select name="" id="Cool"></select>
+        
+        <label for="Hard">Hard Bop</label>
+        <select name="" id="Hard"></select>
+        
+        <label for="Free">Free Jazz/Avant Garde</label>
+        <select name="" id="Free"></select>
+        
+        <label for="Fusion">Jazz Fusion</label>
+        <select name="" id="Fusion"></select>
+        
+        <label for="Eclectic">Eclecticism</label>
+        <select name="" id="Eclectic"></select>
+        
+        <button id="create-discover">Discover new artists!</button>
+        <div id="discover"></div>
+        <br><br>
+        <form id="new-artist-form">
+            <label for="">New Artist</label>
+            <input type="text" name="artist">
+    
+            <!-- <label for="">Seminal Album</label>
+            <input type="text" name="album"> -->
+    
+         <select name="eraSelect" id="eraSelect">
+                <option value="Early Jazz/New Orleans and Chicago Dixieland">Early Jazz/New Orleans</option>
+                <option value="Swing/Big Band">Swing Big Band</option>
+                <option value="Bebop">Bebop</option>
+                <option value="Cool">Cool</option>
+                <option value="Hard Bop">Hard Bop</option>
+                <option value="Free Jazz/Avant Garde">Free Jazz/Avant Garde</option>
+                <option value="Fusion/Jazz-Rock">Jazz Fusion</option>
+                <option value="Eclecticisim">Eclecticism</option>
+            </select>
+            <input type="submit">
+        </form>
+      </div>
+   
     
     <script src="src/era.js"></script>
     <script src="src/discoverArtist.js"></script>
