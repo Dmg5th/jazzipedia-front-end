@@ -14,7 +14,6 @@ class AppContainer {
 
     createArtist(e){
       e.preventDefault()
-      //Maybe use object desturturing here
       const data = e.target;
    
       fetch(`${this.url}artists`, {
@@ -30,8 +29,9 @@ class AppContainer {
       }) 
       .then(response => response.json())
       .then(data => { 
-        const {id, name, era} = data 
-        new Artist(id, name, era)
+        // destructured variables 
+        const {id, name, album, bio, url, era} = data 
+        new Artist(id, name, album, bio, url, era)
         this.renderArtists();
         const newArtistForm = document.querySelector("#new-artist-form")
         newArtistForm.reset()
@@ -40,12 +40,8 @@ class AppContainer {
   
     } 
 
-    
-
     getRandomArtists(){
-      const discoverArtistDiv = document.querySelector("#discover");
-      discoverArtistDiv.innerHTML = ""
-        let randomArtists = []
+      let randomArtists = []
         //randomize each artist from an era
             AppContainer.eras.forEach(era => {
                 randomArtists.push(Artist.byEra(era.name)[Math.floor(Math.random() * Artist.byEra(era.name).length)]);
@@ -56,6 +52,8 @@ class AppContainer {
         //Instantiate a DiscoverArtists instance with these artists
          new DiscoverArtist(randomArtists)
          //insert data into dom 
+         const discoverArtistDiv = document.querySelector("#discover");
+         discoverArtistDiv.innerHTML = ""
          
          AppContainer.discoverArtists.artists.forEach(artist => {
               const artistDiv = document.createElement("div")
@@ -84,8 +82,9 @@ class AppContainer {
         .then(resp => resp.json())
          //populate artists and eras properties with the returned data
         .then(data =>  {
+          console.log(data)
             data.forEach(artist => {
-                new Artist(artist.id, artist.name, artist.era) 
+                new Artist(artist.id, artist.name, artist.album, artist.bio, artist.url, artist.era) 
                 //Avoid instantiating duplicate eras
                 if (!AppContainer.eras.map(era => era.name).includes(artist.name)) {
                     new Era(artist.era.name)
