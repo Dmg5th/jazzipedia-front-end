@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jazzipedia</title>
     <link rel="stylesheet" href="src/bootstrap.min.css">
+    <link rel="stylesheet" href="src/index.css">
 </head>
 <body>
     <div class="jumbotron">
@@ -15,29 +16,29 @@
           <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
         </p> -->
 
-        <label for="Early">Early Jazz/New Orleans</label>
-        <div name="" id="Early"></div>
+        <label for="Early" id="EarlyLabel">Early Jazz/New Orleans</label>
+        <div name="" id="Early" class="hidden"></div>
         
-        <label for="Swing">Swing Big Band</label>
-        <div name="" id="Swing"></div>
+        <label for="Swing" id="SwingLabel">Swing Big Band</label>
+        <div name="" id="Swing" class="hidden"></div>
         
-        <label for="Bebop">Bebop</label>
-        <div name="" id="Bebop"></div>
+        <label for="Bebop" id="BebopLabel">Bebop</label>
+        <div name="" id="Bebop" class="hidden"></div>
         
-        <label for="Cool">Cool</label>
-        <div name="" id="Cool"></div>
+        <label for="Cool" id="CoolLabel">Cool</label>
+        <div name="" id="Cool" class="hidden"></div>
         
-        <label for="Hard">Hard Bop</label>
-        <div name="" id="Hard"></div>
+        <label for="Hard" id="HardLabel">Hard Bop</label>
+        <div name="" id="Hard" class="hidden"></div>
         
-        <label for="Free">Free Jazz/Avant Garde</label>
-        <div name="" id="Free"></div>
+        <label for="Free" id="FreeLabel">Free Jazz/Avant Garde</label>
+        <div name="" id="Free" class="hidden"></div>
         
-        <label for="Fusion">Jazz Fusion</label>
-        <div name="" id="Fusion"></div>
+        <label for="Fusion" id="FusionLabel">Jazz Fusion</label>
+        <div name="" id="Fusion" class="hidden"></div>
         
-        <label for="Eclectic">Eclecticism</label>
-        <div name="" id="Eclectic"></div>
+        <label for="Eclectic" id="EclecticLabel">Eclecticism</label>
+        <div name="" id="Eclectic" class="hidden"></div>
         
         <button id="create-discover" class="btn btn-info">Discover new artists!</button>
         <div id="discover"></div>
@@ -47,8 +48,14 @@
             <label for="">Artist Name</label>
             <input type="text" name="artist">
     
-            <!-- <label for="">Seminal Album</label>
-            <input type="text" name="album"> -->
+            <label for="">Seminal Album</label>
+            <input type="text" name="album">
+
+            <label for="">Bio</label>
+            <textarea name="bio" id="" cols="30" rows="10" placeholder="Enter a short bio here"></textarea>
+
+            <label for="">Enter to URL to their music</label>
+            <input type="text" name="url">
     
          <select name="eraSelect" id="eraSelect">
                 <option value="Early Jazz/New Orleans and Chicago Dixieland">Early Jazz/New Orleans</option>

@@ -3,6 +3,7 @@ class AppContainer {
     static eras = [];
     url = "http://localhost:3000/" 
     static discoverArtists = {};
+    static domEleme
 
     bindEventListeners(){
       const button = document.querySelector("#create-discover")
@@ -10,11 +11,30 @@ class AppContainer {
 
       const newArtistForm = document.querySelector("#new-artist-form")
       newArtistForm.addEventListener("submit", this.createArtist.bind(this));
+      
+      const labels = {
+       earlyLabel: document.querySelector("#EarlyLabel"),
+       swingLabel: document.querySelector("#SwingLabel"),
+       bebopLabel: document.querySelector("#BebopLabel"),
+       coolLabel: document.querySelector("#CoolLabel"),
+       hardLabel: document.querySelector("#HardLabel"),
+       freeLabel: document.querySelector("#FreeLabel"),
+       fusionLabel: document.querySelector("#FusionLabel"),
+       eclecticLabel: document.querySelector("#EclecticLabel")
+      }
+     
+      Object.keys(labels).forEach(label => {
+        labels[label].addEventListener("click", (e) => {
+          let era = e.target.innerHTML 
+        })
+      });
+
     };
 
     createArtist(e){
       e.preventDefault()
       const target = e.target;
+      
       fetch(`${this.url}artists`, {
         method: 'POST',
         headers: {
@@ -23,8 +43,10 @@ class AppContainer {
         },
         body: JSON.stringify({
           name: target.artist.value,
-          // album: target.album.value,
-          era: target.children[2].value
+          album: target.album.value,
+          bio: target.bio.value,
+          url: target.url.value,
+          era:  target.eraSelect.value
         })  
       }) 
       .then(response => response.json())
@@ -77,7 +99,7 @@ class AppContainer {
          
     }
 
-    getArtists(){
+    getArtists(era){
        //make a fetch request to artists
         fetch(this.url + 'artists')
         .then(resp => resp.json())
@@ -106,6 +128,7 @@ class AppContainer {
         const fusionDiv = document.querySelector("#Fusion")
         const eclecticDiv = document.querySelector("#Eclectic")
         
+        
         earlyDiv.innerHTML = ""
         swingDiv.innerHTML = ""
         bebopDiv.innerHTML = ""
@@ -114,7 +137,8 @@ class AppContainer {
         freeDiv.innerHTML = ""
         fusionDiv.innerHTML = ""
         eclecticDiv.innerHTML = ""
-        
+
+     
       AppContainer.artists.forEach(artist => {
             const p = document.createElement("p")
             p.innerText = artist.name;
