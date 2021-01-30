@@ -12,6 +12,17 @@ class AppContainer {
       const newArtistForm = document.querySelector("#new-artist-form")
       newArtistForm.addEventListener("submit", this.createArtist.bind(this));
       
+      const artistDetailModals = document.querySelectorAll(".artist-details");
+ 
+      artistDetailModals.forEach(modal => {
+          modal.addEventListener("click", (e) => {
+            fetch(`${this.url}artists/${e.target.id}`)
+            .then(resp => resp.json())
+            .then(data => this.displayArtistDetails(data))
+            .catch(error => console.log(error))
+        })
+      });
+
       const labels = {
        earlyLabel: document.querySelector("#EarlyLabel"),
        swingLabel: document.querySelector("#SwingLabel"),
@@ -28,35 +39,14 @@ class AppContainer {
           const endingIndex = e.target.id.indexOf("Label")
           const targetId = e.target.id.slice(0,endingIndex)
           const eraDiv = document.querySelector(`#${targetId}`)
-         
-          // const table = document.createElement("table")
-          // table.classList.add("table-hover")
-          // const tHead = document.createElement("thead")
-          // const header = document.createElement("tr")
-          // const nameHeader = document.createElement("th")
-          // const albumHeader = document.createElement("th")   
-          // const urlHeader = document.createElement("th")   
-          // const tBody = document.querySelector("tbody")
-          // const tD = document.querySelector("td")
-          
-          // nameHeader.innerText = "Name"
-          // albumHeader.innerText = "Seminal Album"
-          // urlHeader.innerText = "URL"
-
-          // header.appendChild(nameHeader);
-          // header.appendChild(albumHeader);
-          // header.appendChild(urlHeader);
-          // tHead.appendChild(header)
-          // table.appendChild(tHead)
-          // eraDiv.innerHTML = table
           eraDiv.classList.toggle("hidden")
-
         })
       });
+  };
 
-   
-
-    };
+    displayArtistDetails(details){
+      console.log(details)
+    }
 
     createArtist(e){
       e.preventDefault()
@@ -93,23 +83,29 @@ class AppContainer {
     getRandomArtists(){
       let randomArtists = []
         //randomize each artist from an era
-            AppContainer.eras.forEach(era => {
-                randomArtists.push(Artist.byEra(era.name)[Math.floor(Math.random() * Artist.byEra(era.name).length)]);
-            });
-        // for (let index = 0; index < 3; index++) {
-        //     randomArtists.push(AppContainer.artists[Math.floor(Math.random() * AppContainer.artists.length)]);
-        // }
+            // AppContainer.eras.forEach(era => {
+            //     randomArtists.push(Artist.byEra(era.name)[Math.floor(Math.random() * Artist.byEra(era.name).length)]);
+            // });
+        for (let index = 0; index < 3; index++) {
+            randomArtists.push(AppContainer.artists[Math.floor(Math.random() * AppContainer.artists.length)]);
+        }
         //Instantiate a DiscoverArtists instance with these artists
          new DiscoverArtist(randomArtists)
          //insert data into dom 
          const discoverArtistDiv = document.querySelector("#discover");
          discoverArtistDiv.innerHTML = ""
+         discoverArtistDiv.classList.toggle = "hidden"
          
          AppContainer.discoverArtists.artists.forEach(artist => {
               const artistDiv = document.createElement("div")
+              artistDiv.className = "card border-info mb-3"
               artistDiv.innerText = artist.name
-              discoverArtistDiv.appendChild(artistDiv).toggle
+              
+              discoverArtistDiv.appendChild(artistDiv)
+             
          })
+
+         
   }
 
     getArtists(era){
@@ -127,6 +123,7 @@ class AppContainer {
                 }
              });
         this.renderArtists()
+        this.bindEventListeners();
         }) 
         .catch(err => alert(err));   
     };
@@ -153,8 +150,9 @@ class AppContainer {
 
         AppContainer.artists.forEach(artist => {
           const p = document.createElement("p")
-          p.className = "card border-info mb-3"
-           p.innerText = artist.name;
+          p.className = "artist-details card border-info mb-3"
+          p.id = `${artist.id}`
+          p.innerText = artist.name;
             //where appended will depend on what era its in 
             switch(artist.era.name) {
             case "Early Jazz/New Orleans and Chicago Dixieland":
@@ -186,8 +184,9 @@ class AppContainer {
      
       }
     })
+}
 
-  }
+
 
 
 }
