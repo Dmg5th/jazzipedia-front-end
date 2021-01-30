@@ -41,7 +41,9 @@ p.lead {
     color: blue;
 }
 
-
+#artist-modal {
+    background-color: rgba(0, 0, 0, 0.4);
+}
 
 
 

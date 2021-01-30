@@ -13,15 +13,21 @@ class AppContainer {
       newArtistForm.addEventListener("submit", this.createArtist.bind(this));
       
       const artistDetailModals = document.querySelectorAll(".artist-details");
- 
+      const closeButton = document.querySelector(".close")
+      
       artistDetailModals.forEach(modal => {
           modal.addEventListener("click", (e) => {
+            document.getElementById("artist-modal").style.display = "block";
             fetch(`${this.url}artists/${e.target.id}`)
             .then(resp => resp.json())
             .then(data => this.displayArtistDetails(data))
             .catch(error => console.log(error))
         })
       });
+
+      closeButton.addEventListener("click", (e) => {
+        document.getElementById("artist-modal").style.display = "none"
+      } )
 
       const labels = {
        earlyLabel: document.querySelector("#EarlyLabel"),
@@ -45,7 +51,8 @@ class AppContainer {
   };
 
     displayArtistDetails(details){
-      console.log(details)
+      document.querySelector(".modal-title").innerText = details.name
+      
     }
 
     createArtist(e){
@@ -105,8 +112,7 @@ class AppContainer {
              
          })
 
-         
-  }
+    }
 
     getArtists(era){
        //make a fetch request to artists
@@ -150,8 +156,10 @@ class AppContainer {
 
         AppContainer.artists.forEach(artist => {
           const p = document.createElement("p")
-          p.className = "artist-details card border-info mb-3"
+          p.className = "artist-details btn btn-outline-success"
           p.id = `${artist.id}`
+          p.setAttribute("data-toggle", "modal")
+          p.setAttribute("data-target", "#artist-modal")
           p.innerText = artist.name;
             //where appended will depend on what era its in 
             switch(artist.era.name) {
