@@ -9,39 +9,40 @@
 <body>
     <div class="jumbotron">
         <h1 class="display-3">Jazzipedia!</h1>
-        <p class="lead">You know....Wikipedia for Jazz.....duh</p>
+        <p class="lead">You know....Wikipedia, but for Jazz</p>
         <hr class="my-4">
-        <!-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
-        <!-- <p class="lead">
+        <p class="p-head"> <strong>Click on a Jazz Era to see the artists associated, or discover some new artists!</strong></p class="p-head">
+    <!-- <p class="lead">
           <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-        </p> -->
-
-        <label for="Early" id="EarlyLabel">Early Jazz/New Orleans</label>
+        </p>  -->
+      <div class="era-buttons">
+        <label for="Early" id="EarlyLabel" class="btn btn-warning">Early Jazz/New Orleans</label>
         <div name="" id="Early" class="hidden"></div>
         
-        <label for="Swing" id="SwingLabel">Swing Big Band</label>
+        <label for="Swing" id="SwingLabel" class="btn btn-warning">Swing Big Band</label>
         <div name="" id="Swing" class="hidden"></div>
         
-        <label for="Bebop" id="BebopLabel">Bebop</label>
+        <label for="Bebop" id="BebopLabel" class="btn btn-warning">Bebop</label>
         <div name="" id="Bebop" class="hidden"></div>
         
-        <label for="Cool" id="CoolLabel">Cool</label>
+        <label for="Cool" id="CoolLabel" class="btn btn-warning">Cool</label>
         <div name="" id="Cool" class="hidden"></div>
         
-        <label for="Hard" id="HardLabel">Hard Bop</label>
+        <label for="Hard" id="HardLabel" class="btn btn-warning">Hard Bop</label>
         <div name="" id="Hard" class="hidden"></div>
         
-        <label for="Free" id="FreeLabel">Free Jazz/Avant Garde</label>
+        <label for="Free" id="FreeLabel" class="btn btn-warning">Free Jazz/Avant Garde</label>
         <div name="" id="Free" class="hidden"></div>
         
-        <label for="Fusion" id="FusionLabel">Jazz Fusion</label>
+        <label for="Fusion" id="FusionLabel" class="btn btn-warning">Jazz Fusion</label>
         <div name="" id="Fusion" class="hidden"></div>
         
-        <label for="Eclectic" id="EclecticLabel">Eclecticism</label>
+        <label for="Eclectic" id="EclecticLabel" class="btn btn-warning">Eclecticism</label>
         <div name="" id="Eclectic" class="hidden"></div>
-        
-        <button id="create-discover" class="btn btn-info">Discover new artists!</button>
+
+        <button id="create-discover" class="btn btn-info" class="btn btn-warning">Discover new artists!</button>
         <div id="discover"></div>
+    </div>
         <hr class="my-4"> 
         <label for="">Are we missing an artist? Add one here!</label>
         <form id="new-artist-form">
@@ -52,12 +53,12 @@
             <input type="text" name="album">
 
             <label for="">Bio</label>
-            <textarea name="bio" id="" cols="30" rows="10" placeholder="Enter a short bio here"></textarea>
+            <textarea name="bio" id="" cols="30" rows="1" placeholder="Enter a short bio here"></textarea>
 
             <label for="">Enter to URL to their music</label>
             <input type="text" name="url">
-    
-         <select name="eraSelect" id="eraSelect">
+          
+        <select name="eraSelect" id="eraSelect">
                 <option value="Early Jazz/New Orleans and Chicago Dixieland">Early Jazz/New Orleans</option>
                 <option value="Swing/Big Band">Swing Big Band</option>
                 <option value="Bebop">Bebop</option>
@@ -69,10 +70,8 @@
             </select>
             <input type="submit">
         </form>
-      </div> 
-   
-    
-    <script src="src/era.js"></script>
+     
+   <script src="src/era.js"></script>
     <script src="src/discoverArtist.js"></script>
     <script src="src/artist.js"></script>
     <script src="src/appContainer.js"></script>

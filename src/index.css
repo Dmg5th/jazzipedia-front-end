@@ -1,12 +1,47 @@
-/* body {
+body {
     width: 100%;
     height: 100%;
-    background-image: url("https://i.ytimg.com/vi/km9Il_-FHjw/maxresdefault.jpg");
+    background-image: url("https://png.pngtree.com/png-vector/20190811/ourlarge/pngtree-jazz-music-player-continuous-one-line-drawing-minimalist-design-of-cello-png-image_1684159.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-} */
+    
+}
+
+.era-buttons {
+    text-align: center;
+}
+
+h1.display-3 {
+    text-align: center;
+    font-size: 100;
+}
+
+p.lead {
+    color: purple;
+    text-align: center;
+    font-size: 25;
+}
+
+.table-dark {
+    color: #fff;
+    background-color: #333;
+    text-align: left;
+}
 
 .hidden {
     display: none;
 }
+
+.p-head {
+    text-emphasis: bold;
+    color: rgb(241, 8, 8);
+}
+
+.artists {
+    color: blue;
+}
+
+
+
+
 
