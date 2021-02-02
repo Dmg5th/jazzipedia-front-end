@@ -50,6 +50,11 @@ p.lead {
     color: blue;
 }
 
+.artist-name {
+    text-align: center;
+    font-style: bold;
+}
+
 
 
 

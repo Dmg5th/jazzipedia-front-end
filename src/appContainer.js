@@ -51,7 +51,7 @@ class AppContainer {
   };
 
     displayArtistDetails(details){
-      document.querySelector(".modal-title").innerText = details.name
+      document.querySelector(".modal-title").innerHTML = `<p class="artist-name"> ${details.name}</p>`
       document.querySelector(".modal-body").innerText = details.bio
       document.querySelector(".modal-footer").innerHTML = `<a id="artist-link" href="${details.url}">Click here to hear ${details.name}'s music!</a>`
       
@@ -91,11 +91,7 @@ class AppContainer {
 
     getRandomArtists(){
       let randomArtists = []
-        //randomize each artist from an era
-            // AppContainer.eras.forEach(era => {
-            //     randomArtists.push(Artist.byEra(era.name)[Math.floor(Math.random() * Artist.byEra(era.name).length)]);
-            // });
-        for (let index = 0; index < 3; index++) {
+      for (let index = 0; index < 3; index++) {
             randomArtists.push(AppContainer.artists[Math.floor(Math.random() * AppContainer.artists.length)]);
         }
         //Instantiate a DiscoverArtists instance with these artists
@@ -106,14 +102,20 @@ class AppContainer {
          discoverArtistDiv.classList.toggle = "hidden"
          
          AppContainer.discoverArtists.artists.forEach(artist => {
-              const artistDiv = document.createElement("div")
-              artistDiv.className = "card border-info mb-3"
-              artistDiv.innerText = artist.name
-              
-              discoverArtistDiv.appendChild(artistDiv)
+            const p = document.createElement("p")
+            p.className = "artist-details btn btn-outline-success"
+            p.id = `${artist.id}`
+            p.setAttribute("data-toggle", "modal")
+            p.setAttribute("data-target", "#artist-modal")
+            p.innerText = artist.name;
+          
+              // const artistDiv = document.createElement("div")
+              // artistDiv.className = "card border-info mb-3"
+              // artistDiv.innerText = artist.name
+            discoverArtistDiv.appendChild(p)
              
          })
-
+         this.bindEventListeners();
     }
 
     getArtists(era){
@@ -194,9 +196,6 @@ class AppContainer {
      
       }
     })
-}
-
-
-
+  }
 
 }
