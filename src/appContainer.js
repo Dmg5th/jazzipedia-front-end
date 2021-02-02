@@ -118,9 +118,10 @@ class AppContainer {
         discoverArtistDiv.innerHTML += `<button id="discover-close-button">Close Discover</button>`
         const closeButton = document.querySelector("#discover-close-button")
         closeButton.addEventListener("click", (e) => {
-          // need code here
+          discoverArtistDiv.innerHTML = ""
         } )  
         this.bindEventListeners();
+        this.getArtists();
     }
 
     getArtists(era){
