@@ -53,7 +53,7 @@ class AppContainer {
     displayArtistDetails(details){
       document.querySelector(".modal-title").innerText = details.name
       document.querySelector(".modal-body").innerText = details.bio
-      document.querySelector(".modal-footer").innerText = details.url
+      document.querySelector(".modal-footer").innerHTML = `<a href="${details.url}">Click here to hear ${details.name}'s music!</a>`
       
     }
 
