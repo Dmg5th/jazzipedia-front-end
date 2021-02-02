@@ -29,6 +29,8 @@ class AppContainer {
         document.getElementById("artist-modal").style.display = "none"
       } )
 
+      
+
       const labels = {
        earlyLabel: document.querySelector("#EarlyLabel"),
        swingLabel: document.querySelector("#SwingLabel"),
@@ -99,7 +101,7 @@ class AppContainer {
          //insert data into dom 
          const discoverArtistDiv = document.querySelector("#discover");
          discoverArtistDiv.innerHTML = ""
-         discoverArtistDiv.classList.toggle = "hidden"
+         
          
          AppContainer.discoverArtists.artists.forEach(artist => {
             const p = document.createElement("p")
@@ -108,14 +110,17 @@ class AppContainer {
             p.setAttribute("data-toggle", "modal")
             p.setAttribute("data-target", "#artist-modal")
             p.innerText = artist.name;
-          
-              // const artistDiv = document.createElement("div")
-              // artistDiv.className = "card border-info mb-3"
-              // artistDiv.innerText = artist.name
+            // const artistDiv = document.createElement("div")
+            // artistDiv.className = "card border-info mb-3"
+            // artistDiv.innerText = artist.name
             discoverArtistDiv.appendChild(p)
-             
          })
-         this.bindEventListeners();
+        discoverArtistDiv.innerHTML += `<button id="discover-close-button">Close Discover</button>`
+        const closeButton = document.querySelector("#discover-close-button")
+        closeButton.addEventListener("click", (e) => {
+          // need code here
+        } )  
+        this.bindEventListeners();
     }
 
     getArtists(era){
