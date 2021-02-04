@@ -80,12 +80,13 @@ class AppContainer {
       .then(response => response.json())
       .then(data => { 
         // destructured variables 
-        debugger
+        // debugger
         const {id, name, album, bio, url, era} = data 
         new Artist(id, name, album, bio, url, era)
-        this.renderArtists();
         const newArtistForm = document.querySelector("#new-artist-form")
         newArtistForm.reset()
+        this.getArtists();
+        this.bindEventListeners();
       })
       .catch((error) => console.error('You messed up  something:', error)) //Potentially refractor this to be more abstract
   
@@ -119,18 +120,22 @@ class AppContainer {
         const closeButton = document.querySelector("#discover-close-button")
         closeButton.addEventListener("click", (e) => {
           discoverArtistDiv.innerHTML = ""
+          location.reload();
+          
         } )  
-        this.bindEventListeners();
         this.getArtists();
+        this.bindEventListeners();
+        
     }
 
     getArtists(era){
-       //make a fetch request to artists
+     //make a fetch request to artists
         fetch(this.url + 'artists')
         .then(resp => resp.json())
          //populate artists and eras properties with the returned data
         .then(data =>  {
           console.log(data)
+          AppContainer.artists = [];
             data.forEach(artist => {
                 new Artist(artist.id, artist.name, artist.album, artist.bio, artist.url, artist.era) 
                 //Avoid instantiating duplicate eras
@@ -138,6 +143,7 @@ class AppContainer {
                     new Era(artist.era.name)
                 }
              });
+           
         this.renderArtists()
         this.bindEventListeners();
         }) 
