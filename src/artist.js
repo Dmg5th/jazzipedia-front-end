@@ -9,6 +9,8 @@ class Artist {
         AppContainer.artists.push(this);
     }
 
+
+
     // static delete(artistId){
     //     AppContainer.artists  = AppContainer.artists.filter(artist => parseInt(artistId) !== artist.id);
     // } 

@@ -143,11 +143,13 @@ class AppContainer {
                     new Era(artist.era.name)
                 }
              });
-           
+
+        this.sortedArtist();
         this.renderArtists()
         this.bindEventListeners();
         }) 
         .catch(err => alert(err));   
+        
     };
     renderArtists(){
         //create DOM nodes and the insert data into them 
@@ -209,5 +211,19 @@ class AppContainer {
       }
     })
   }
+
+    sortedArtist () {
+      AppContainer.artists.sort(function(a, b) {
+      let nameA = a.name.toUpperCase(); // ignore upper and lowercase
+      let nameB = b.name.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+    })
+  }
+
 
 }
